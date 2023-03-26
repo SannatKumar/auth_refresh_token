@@ -75,6 +75,8 @@ We need this file to configure typescript otherwise it will throw and error.
 Create a file under the main folder with the name
 nodemon.json
 
+This file we tell the nodemon where to watch and what kind of file extension. 
+
 Install ts-node with the following command:
 
 $npm i ts-node typescript
@@ -82,6 +84,20 @@ $npm i ts-node typescript
 Run the command:
 $npm start
 
-This shoul run now the typescript file.
+This should run now the typescript file.
+
+Install Express, Express is a popular framework for nodejs.
+The installation command:
+
+$npm i express
+
+Also install the dev dependencies for typescript
+
+$npm i -D @types/express
+
+
+
+
+
 
 
