@@ -96,6 +96,12 @@ Also install the dev dependencies for typescript
 $npm i -D @types/express
 
 
+After this go to, 
+localhost:8000
+There we can see the result
+Hello 
+
+
 
 
 
