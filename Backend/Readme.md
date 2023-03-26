@@ -24,7 +24,34 @@ Write the following line.
 
 "start": "node src/index.js",
 
+Just to test The index.js file,
+
+Run the command in the terminal:
+
+$npm start
+
+This should print the Hello Raj in the console.
+
 Now install nodemon to auto update the changes and reload the code.
 
 Nodemon installation command.
 $npm i nodemon
+
+After installing the nodemon,
+
+o to the package.json file and change inside scripts
+
+Change the following line.
+
+"start": "node src/index.js",
+
+To
+
+"start": "nodemon src/index.js",
+
+Again run the command,
+$npm start
+
+and Try to change the the console result while the program is running.
+This should auto update the result.
+
