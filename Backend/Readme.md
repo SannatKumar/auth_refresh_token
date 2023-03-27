@@ -95,11 +95,39 @@ Also install the dev dependencies for typescript
 
 $npm i -D @types/express
 
-
+Route
 After this go to, 
 localhost:8000
 There we can see the result
 Hello 
+
+Now lets use the database, 
+We use mysql database. 
+
+See the database Readme-->
+
+
+After the MySQL is up and running Install TypeORM to connect with Database.
+The installation command:
+
+$npm install typeorm --save
+
+$npm install reflect-metadata --save
+
+$npm install @types/node --save-dev
+
+MySQL Driver command:
+
+$npm install mysql2 --save
+
+After all the installation,
+
+Create an ormconfig.json file and write the database configuration to that file in json format.
+ 
+
+
+
+
 
 
 
