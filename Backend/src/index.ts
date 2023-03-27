@@ -1,6 +1,17 @@
 //Import Express
 import express, {Request, Response} from 'express';
 
+//import create connection from typeorm package
+import  {myDataSource}  from "../app-data-source";
+
+//create database connection
+myDataSource.initialize().then(() => {
+    console.log("Data Source has been initialized");
+})
+.catch((err : any) => {
+    console.error("Error during Data Source initialization:", err);
+})
+
 //create a app as a function
 const app = express();
 

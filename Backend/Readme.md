@@ -122,8 +122,12 @@ $npm install mysql2 --save
 
 After all the installation,
 
-Create an ormconfig.json file and write the database configuration to that file in json format.
- 
+Create an app-data-source.ts file and write the database configuration to that file.
+
+Create a database connection in server.ts file.
+The code is under create database connection comment section.
+
+
 
 
 
