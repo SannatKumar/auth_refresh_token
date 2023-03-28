@@ -127,6 +127,10 @@ Create an app-data-source.ts file and write the database configuration to that f
 Create a database connection in server.ts file.
 The code is under create database connection comment section.
 
+After this Process the code has been moved inside database connection because database connection is needed before listening to port 8000.
+
+
+
 
 
 
