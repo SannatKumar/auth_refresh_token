@@ -129,6 +129,13 @@ The code is under create database connection comment section.
 
 After this Process the code has been moved inside database connection because database connection is needed before listening to port 8000.
 
+*** Experimental decorators are uncomment to remove the error while creating entities ***
+- Entities
+
+Create entity folder inside src folder.
+
+
+
 
 
 
