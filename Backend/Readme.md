@@ -134,7 +134,11 @@ After this Process the code has been moved inside database connection because da
 
 Create entity folder inside src folder.
 
+Create routes.ts inside src folder.
 
+Inside Roues.ts create a post route called 'api/register' and call a function from 
+auth.controller.ts.
+This auth.controller.ts file is inside newly created controller folder.
 
 
 
