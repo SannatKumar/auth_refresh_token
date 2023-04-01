@@ -165,6 +165,22 @@ $npm i -D @types/jsonwebtoken
 Access Token and Refresh token are created using jwt.io. jsonwebtokens.
 Store them in a http only cookie.
 
+Now CORS(Cross-origin Resource Sharing)
+Install Cross Origin Resource Sharing with the package command:
+$npm i cors
+
+Devdependencies
+$npm i -D @types/cors
+
+Install dotenv
+$npm i dotenv
+
+Write your access secret to .env file.
+This will help in change of secrets in local and production machine. 
+Now require .env in the begining of the app.
+
+
+
 
 
 

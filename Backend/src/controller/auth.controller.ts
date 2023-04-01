@@ -63,7 +63,7 @@ export const Login = async (req: Request, res: Response) =>{
     const accessToken = sign({
         id: userData.id,// Payload: id of the user
         },
-        "access_secret",
+        process.env.ACCESS_SECRET || '',
         {
             expiresIn: '30s'
         }
@@ -73,7 +73,7 @@ export const Login = async (req: Request, res: Response) =>{
     const refreshToken = sign({
         id: userData.id,// Payload: id of the user
         },
-        "refresh_token",
+        process.env.REFRESH_SECRET || '',
         {
             expiresIn: '1w'
         }

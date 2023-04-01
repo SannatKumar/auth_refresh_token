@@ -1,3 +1,7 @@
+//Get the .env file configured.
+require('dotenv').config(); 
+
+
 //Import Express
 import express, {Request, Response} from 'express';
 
@@ -6,6 +10,9 @@ import {routes} from './routes';
 
 //import create connection from typeorm package
 import  {myDataSource}  from "../app-data-source";
+
+//import cors from cors
+import cors from 'cors';
 
 //create database connection
 myDataSource.initialize().then(() => {
@@ -19,7 +26,11 @@ myDataSource.initialize().then(() => {
     //use express as json
     app.use(express.json());
 
-    
+    //Use the cors with app declare the front end origin here// Useful for the frontend
+    app.use(cors({
+        origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:4200'],
+        credentials: true
+    }))
     /*This is commented because all the routes are included inside routes.ts file
     //create a route
     app.get('/', (req: Request, res: Response) =>{
