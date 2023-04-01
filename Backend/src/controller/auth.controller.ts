@@ -2,7 +2,8 @@ import {Request, Response} from 'express';
 import { myDataSource } from '../../app-data-source';
 import { user } from '../entity/user.entity';
 import bcryptjs from 'bcryptjs';
-import {sign} from 'jsonwebtoken';
+import {sign, verify} from 'jsonwebtoken';
+import { getRepository } from 'typeorm';
 
 
 //Register function to register the user
@@ -110,8 +111,37 @@ export const Login = async (req: Request, res: Response) =>{
 export const AuthenticatedUser = async (req: Request, res: Response) =>{
     const cookie = req.cookies['access_token'];
 
-    //Send the cookie
-    res.send(cookie);
+    const payload: any = verify(cookie, process.env.ACCESS_SECRET || '');
+
+    //Check if payload is set
+    if(!payload){
+        return res.status(401).send({
+            message: 'Unauthenticated'
+        });
+    }
+    //Ge the user
+    const userRepository = myDataSource.getRepository(user);
+
+    //Find the user by id
+    const userData = await userRepository.findOneBy({"id": payload.id});
+
+    //Check if user is there
+    if(!userData){
+        res.status(401).send({
+            message: 'Unauthenticated'
+        });
+    }
+
+
+    //Now return the authenticated user
+
+    res.send(userData);
+
+
+
+
+    // //Send the cookie
+    // res.send(cookie);
 }
 
 export const CheckGetMethod = async (req: Request, res: Response) =>{
