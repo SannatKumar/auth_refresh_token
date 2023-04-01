@@ -150,6 +150,10 @@ Install devdependencies with the following command.
 
 $npm i -D @types/bcryptjs
 
+After saving the data to database, lets login with the saved user.
+
+
+
 
 
 

@@ -2,8 +2,9 @@ import {Request, Response} from 'express';
 import { myDataSource } from '../../app-data-source';
 import { user } from '../entity/user.entity';
 import bcryptjs from 'bcryptjs';
+import { getRepository } from 'typeorm';
 
-//Resgister function to register the user
+//Register function to register the user
 export const Register = async (req: Request, res: Response) =>{
     //Get the body from Postman Post Request
     const body = req.body;
@@ -35,4 +36,29 @@ export const Register = async (req: Request, res: Response) =>{
    res.send(userData);
     //Send the response Body back as it is for testing.
     //res.send(body);
+}
+
+export const Login = async (req: Request, res: Response) =>{
+    //get The user Repository
+    const userRepository = myDataSource.getRepository(user);
+    //Use await to findOne User with the email
+    const userData = await userRepository.findOneBy({
+        "email": req.body.email});
+
+    //If no user found Send the error message Invalid Credentials
+    if(!userData){
+        return res.status(400).send({
+            message: 'Invalid Credentials'
+        });
+    }
+
+    //if userData found compare the password with bcryptjs and if not true return Invalid Credentials
+    if(!await bcryptjs.compare(req.body.password, userData.password)){
+        return res.status(400).send({
+            message: 'Invalid Credentials'
+        });
+    }
+
+    //If Pasword Match return user for now.
+    res.send(userData);
 }
