@@ -141,6 +141,17 @@ auth.controller.ts.
 This auth.controller.ts file is inside newly created controller folder.
 
 
+*********** Hash The Password With bcrypt js.*********
+
+Installation command for brcypt.js
+$npm i bcryptjs
+
+Install devdependencies with the following command.
+
+$npm i -D @types/bcryptjs
+
+
+
 
 
 
