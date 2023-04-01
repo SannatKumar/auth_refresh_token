@@ -14,6 +14,9 @@ import  {myDataSource}  from "../app-data-source";
 //import cors from cors
 import cors from 'cors';
 
+//import cookie parser from cookie-parser
+import cookieParser from 'cookie-parser';
+
 //create database connection
 myDataSource.initialize().then(() => {
     console.log("Data Source has been initialized");
@@ -25,6 +28,7 @@ myDataSource.initialize().then(() => {
 
     //use express as json
     app.use(express.json());
+    app.use(cookieParser());
 
     //Use the cors with app declare the front end origin here// Useful for the frontend
     app.use(cors({

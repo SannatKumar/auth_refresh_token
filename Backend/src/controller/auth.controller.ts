@@ -4,6 +4,7 @@ import { user } from '../entity/user.entity';
 import bcryptjs from 'bcryptjs';
 import {sign} from 'jsonwebtoken';
 
+
 //Register function to register the user
 export const Register = async (req: Request, res: Response) =>{
     //Get the body from Postman Post Request
@@ -103,4 +104,20 @@ export const Login = async (req: Request, res: Response) =>{
     res.send({
         message: 'Success'
     });
+}
+
+//Authenticated User
+export const AuthenticatedUser = async (req: Request, res: Response) =>{
+    const cookie = req.cookies['access_token'];
+
+    //Send the cookie
+    res.send(cookie);
+}
+
+export const CheckGetMethod = async (req: Request, res: Response) =>{
+
+    if(req)
+    {
+        res.send({message: "Yes It is here"});    
+    }
 }

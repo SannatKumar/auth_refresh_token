@@ -179,6 +179,19 @@ Write your access secret to .env file.
 This will help in change of secrets in local and production machine. 
 Now require .env in the begining of the app.
 
+Lets get the Authenticated User
+Createa function In Auth.controller.ts.
+
+Install cookieparser with command:
+$npm i cookie-parser
+
+Install Devdependencies
+$npm i -D @types/cookie-parser
+
+
+
+
+
 
 
 
