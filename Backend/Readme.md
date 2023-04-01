@@ -152,6 +152,18 @@ $npm i -D @types/bcryptjs
 
 After saving the data to database, lets login with the saved user.
 
+Now Install JSONWebTokens for uniquely idenfy for our users
+Command:
+
+$npm i jsonwebtoken
+
+For devdependencies
+
+$npm i -D @types/jsonwebtoken
+
+
+Access Token and Refresh token are created using jwt.io. jsonwebtokens.
+Store them in a http only cookie.
 
 
 

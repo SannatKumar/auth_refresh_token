@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import { myDataSource } from '../../app-data-source';
 import { user } from '../entity/user.entity';
 import bcryptjs from 'bcryptjs';
-import { getRepository } from 'typeorm';
+import {sign} from 'jsonwebtoken';
 
 //Register function to register the user
 export const Register = async (req: Request, res: Response) =>{
@@ -59,6 +59,48 @@ export const Login = async (req: Request, res: Response) =>{
         });
     }
 
+    //Create a access token
+    const accessToken = sign({
+        id: userData.id,// Payload: id of the user
+        },
+        "access_secret",
+        {
+            expiresIn: '30s'
+        }
+    );
+
+    //Create Refresh Token// Refresh Token job is to create new accessToken when the last token expires
+    const refreshToken = sign({
+        id: userData.id,// Payload: id of the user
+        },
+        "refresh_token",
+        {
+            expiresIn: '1w'
+        }
+    );
+
+    //Set the access token in a http only cookie
+    res.cookie('access_token', accessToken,{
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000 //1 day max age to expire
+    });
+
+    //Set the access token in a http only cookie
+    res.cookie('refresh_token', refreshToken,{
+        httpOnly: true,
+        maxAge: 7* 24 * 60 * 60 * 1000 //7 days Max Age  to expire
+    });
+
     //If Pasword Match return user for now.
-    res.send(userData);
+    //res.send(userData);
+
+    //Send access Token and RefreshToken
+    // res.send({
+    //     accessToken,
+    //     refreshToken
+    // });
+
+    res.send({
+        message: 'Success'
+    });
 }
