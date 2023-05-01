@@ -1,6 +1,6 @@
 //Import routes from express
 import { Router } from "express"
-import { Register, Login, AuthenticatedUser, CheckGetMethod, Refresh} from "./controller/auth.controller";
+import { Register, Login, AuthenticatedUser, CheckGetMethod, Refresh, LogOut} from "./controller/auth.controller";
 
 //Write all the router 
 export  const routes = (router: Router) =>{
@@ -9,4 +9,5 @@ export  const routes = (router: Router) =>{
     router.get('/api/user', AuthenticatedUser);
     router.get('/api/checkgetmethod', CheckGetMethod);
     router.post('/api/refresh', Refresh);
+    router.post('/api/logout', LogOut);
 }

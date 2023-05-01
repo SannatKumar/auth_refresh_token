@@ -184,6 +184,17 @@ export const Refresh = async(req: Request, res: Response) => {
     }
 }
 
+//Log out Method
+export const LogOut = async(req: Request, res: Response) => {
+    res.cookie('access_token', '', {maxAge: 0});
+    res.cookie('refresh_token', '', {maxAge: 0});
+
+    res.send({
+        message: "Success"
+    });
+
+
+} 
 
 export const CheckGetMethod = async (req: Request, res: Response) =>{
 
