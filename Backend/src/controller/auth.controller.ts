@@ -153,6 +153,38 @@ export const AuthenticatedUser = async (req: Request, res: Response) =>{
     // res.send(cookie);
 }
 
+export const Refresh = async(req: Request, res: Response) => {
+    try{
+        const cookie = req.cookies['refresh_token'];
+
+        const payload: any = verify(cookie, process.env.REFRESH_SECRET || '');
+
+        if(!payload){
+            return res.status(401).send({
+                message: 'Unauthenticated'
+            });
+        }
+
+        const accessToken = sign({
+            id: payload.id
+        }, process.env.ACCESS_SECRET || '', {expiresIn: '30s'});
+
+        res.cookie('access_token', accessToken, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000 //1 day max age to expire
+        });
+
+        res.send({
+            message: 'Success'
+        });
+    }catch(e){
+        return res.status(401).send({
+            message: 'unauthenticated'
+        });
+    }
+}
+
+
 export const CheckGetMethod = async (req: Request, res: Response) =>{
 
     if(req)

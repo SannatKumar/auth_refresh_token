@@ -189,6 +189,11 @@ Install Devdependencies
 $npm i -D @types/cookie-parser
 
 
+First Login and try the authenticated user path because of the cookie expiry time.
+
+
+
+
 
 
 
