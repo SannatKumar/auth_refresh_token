@@ -109,33 +109,42 @@ export const Login = async (req: Request, res: Response) =>{
 
 //Authenticated User
 export const AuthenticatedUser = async (req: Request, res: Response) =>{
-    const cookie = req.cookies['access_token'];
+    try{
+        const cookie = req.cookies['access_token'];
 
-    const payload: any = verify(cookie, process.env.ACCESS_SECRET || '');
+        const payload: any = verify(cookie, process.env.ACCESS_SECRET || '');
+        
+        //Check if payload is set
+        if(!payload){
+            return res.status(401).send({
+                message: 'No Payload. Unauthenticated'
+            });
+        }
+        //Ge the user
+        const userRepository = myDataSource.getRepository(user);
 
-    //Check if payload is set
-    if(!payload){
+        //Find the user by id
+        const userData = await userRepository.findOneBy({"id": payload.id});
+
+        //Check if user is there
+        if(!userData){
+            res.status(401).send({
+                message: 'No User Data. Unauthenticated'
+            });
+        }
+
+        //Extract The Password out
+        const {password, ...data} = userData;
+         
+        //Now return the authenticated user
+        
+        res.send(data);
+    }catch (e){
         return res.status(401).send({
-            message: 'Unauthenticated'
+            message: 'Catch Block. UnAuthenticated'
         });
     }
-    //Ge the user
-    const userRepository = myDataSource.getRepository(user);
-
-    //Find the user by id
-    const userData = await userRepository.findOneBy({"id": payload.id});
-
-    //Check if user is there
-    if(!userData){
-        res.status(401).send({
-            message: 'Unauthenticated'
-        });
-    }
-
-
-    //Now return the authenticated user
-
-    res.send(userData);
+    
 
 
 
