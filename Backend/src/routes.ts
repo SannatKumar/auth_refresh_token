@@ -1,7 +1,7 @@
 //Import routes from express
 import { Router } from "express"
 import { Register, Login, AuthenticatedUser, CheckGetMethod, Refresh, LogOut} from "./controller/auth.controller";
-import { Forgot } from "./controller/forgot.controller";
+import { ResetPassword, ForgotPassword } from "./controller/forgot.controller";
 
 //Write all the router 
 export  const routes = (router: Router) =>{
@@ -11,5 +11,6 @@ export  const routes = (router: Router) =>{
     router.get('/api/checkgetmethod', CheckGetMethod);
     router.post('/api/refresh', Refresh);
     router.post('/api/logout', LogOut);
-    router.post('/api/forgot', Forgot);
+    router.post('/api/forgot', ForgotPassword);
+    router.post('/api/reset', ResetPassword);
 }
