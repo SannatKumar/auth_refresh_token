@@ -191,6 +191,10 @@ $npm i -D @types/cookie-parser
 
 First Login and try the authenticated user path because of the cookie expiry time.
 
+Install Nodemailer both library and devdependencies.
+$npm i nodemailer
+$npm i -D @types/nodemailer
+
 
 
 
