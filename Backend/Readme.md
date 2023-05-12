@@ -195,7 +195,9 @@ Install Nodemailer both library and devdependencies.
 $npm i nodemailer
 $npm i -D @types/nodemailer
 
+Now Create the Front End
 
+$npx create-react-app react-auth --template typescript
 
 
 
