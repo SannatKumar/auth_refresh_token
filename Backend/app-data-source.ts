@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { user } from './src/entity/user.entity'
+import { Reset } from "./src/entity/reset.entity";
 
 export const myDataSource = new DataSource({
     
@@ -10,7 +11,7 @@ export const myDataSource = new DataSource({
         password: "Ramysql123456..-",
         database: "authentication_app",
         entities: [
-            user
+            user, Reset
         ],
         logging: false,
         synchronize: true
