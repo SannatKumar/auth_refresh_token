@@ -199,6 +199,14 @@ Now Create the Front End
 
 $npx create-react-app react-auth --template typescript
 
+Install React Router Dom
+
+$npm i react-router-dom
+$npm i -D @types/react-router-dom
+
+
+
+
 
 
 
